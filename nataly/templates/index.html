@@ -71,6 +71,7 @@
                     </div>
                     <div class="team-icon d-none d-xl-flex justify-content-center me-3">
                         <a class="btn btn-square btn-light rounded-circle mx-1" href=""><i class="fab fa-instagram"></i></a>
+                        <a class="btn btn-square btn-light rounded-circle mx-1" href=""><i class="fab fa-telegram"></i></a>
                     </div>
                     <a href="#" class="btn btn-primary rounded-pill py-2 px-4 flex-shrink-0">Напиши мне</a>
                 </div>
@@ -81,7 +82,7 @@
         <!-- Carousel Start -->
         <div class="header-carousel owl-carousel">
             <div class="header-carousel-item">
-                <img src="{% static 'img/carousel-1.jpg' %}" class="img-fluid w-100" alt="Image">
+                <img src="{% static 'img/carousel-1.png' %}" class="img-fluid w-100" alt="Image">
                 <div class="carousel-caption">
                     <div class="container align-items-center py-4">
                         <div class="row g-5 align-items-center">
@@ -113,7 +114,7 @@
                                             </div>
                                             <div class="col-12">
                                                 <select class="form-select border-0 py-2" aria-label="Default select example">
-                                                    <option selected>Select Packages</option>
+                                                    <option selected>Вид ткани</option>
                                                     <option value="1">Family Packages</option>
                                                     <option value="2">Basic Packages</option>
                                                     <option value="3">Premium Packages</option>
@@ -123,7 +124,7 @@
                                                 <input class="form-control border-0 py-2" type="date">
                                             </div>
                                             <div class="col-12">
-                                                <input type="number" class="form-control border-0 py-2" id="number" placeholder="Guest">
+                                                <input type="number" class="form-control border-0 py-2" id="number" placeholder="Сложность">
                                             </div>
                                             <div class="col-12">
                                                 <button type="button" class="btn btn-primary w-100 py-2 px-5">Рассчитать</button>
@@ -136,64 +137,107 @@
                     </div>
                 </div>
             </div>
-<!--            <div class="header-carousel-item">-->
-<!--                <img src="{% static 'img/carousel-2.jpg' %}" class="img-fluid w-100" alt="Image">-->
-<!--                <div class="carousel-caption">-->
-<!--                    <div class="container py-4">-->
-<!--                        <div class="row g-5 align-items-center">-->
-<!--                            <div class="col-xl-7 fadeInLeft animated" data-animation="fadeInLeft" data-delay="1s" style="animation-delay: 1s;">-->
-<!--                                <div class="text-start">-->
-<!--                                    <h4 class="text-primary text-uppercase fw-bold mb-4">Welcome To WaterLand</h4>-->
-<!--                                    <h1 class="display-4 text-uppercase text-white mb-4">The Greatest Water and Amusement Park</h1>-->
-<!--                                    <p class="mb-4 fs-5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy...-->
-<!--                                    </p>-->
-<!--                                    <div class="d-flex flex-shrink-0">-->
-<!--                                        <a class="btn btn-primary rounded-pill text-white py-3 px-5" href="#">Our Packages</a>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <div class="col-xl-5 fadeInRight animated" data-animation="fadeInRight" data-delay="1s" style="animation-delay: 1s;">-->
-<!--                                <div class="ticket-form p-5">-->
-<!--                                    <h2 class="text-dark text-uppercase mb-4">book your ticket</h2>-->
-<!--                                    <form>-->
-<!--                                        <div class="row g-4">-->
-<!--                                            <div class="col-12">-->
-<!--                                                <input type="text" class="form-control border-0 py-2" id="name" placeholder="Your Name">-->
-<!--                                            </div>-->
-<!--                                            <div class="col-12 col-xl-6">-->
-<!--                                                <input type="email" class="form-control border-0 py-2" id="email" placeholder="Your Email">-->
-<!--                                            </div>-->
-<!--                                            <div class="col-12 col-xl-6">-->
-<!--                                                <input type="phone" class="form-control border-0 py-2" id="phone" placeholder="Phone">-->
-<!--                                            </div>-->
-<!--                                            <div class="col-12">-->
-<!--                                                <select class="form-select border-0 py-2" aria-label="Default select example">-->
-<!--                                                    <option selected>Select Packages</option>-->
-<!--                                                    <option value="1">Family Packages</option>-->
-<!--                                                    <option value="2">Basic Packages</option>-->
-<!--                                                    <option value="3">Premium Packages</option>-->
-<!--                                                </select>-->
-<!--                                            </div>-->
-<!--                                            <div class="col-12">-->
-<!--                                                <input class="form-control border-0 py-2" type="date">-->
-<!--                                            </div>-->
-<!--                                            <div class="col-12">-->
-<!--                                                <input type="number" class="form-control border-0 py-2" id="number" placeholder="Guest">-->
-<!--                                            </div>-->
-<!--                                            <div class="col-12">-->
-<!--                                                <button type="button" class="btn btn-primary w-100 py-2 px-5">Book Now</button>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </form>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
+
         </div>
         <!-- Carousel End -->
 
+         <!-- About Start -->
+    <div class="container-fluid about pt-5 pb-5">
+        <div class="container pb-5">
+            <div class="row g-5">
+                <div class="col-xl-6 wow fadeInUp" data-wow-delay="0.2s">
+                    <div>
+                        <h4 class="text-secondary">Пошив на заказ в Минске — решение для тех, кто ценит качество и идеальную посадку</h4>
+                        <h2 class="display-5 text-dark text-uppercase mb-4">Одежда, которая сидит безупречно</h2>
+                        <p class="mb-5">Предлагаю индивидуальный пошив одежды на заказ. Создаю костюмы, платья и пальто, которые идеально повторяют ваши изгибы и подчеркивают достоинства. Это ваш шанс получить именно ту вещь, о которой вы всегда мечтали.
+                        </p>
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="d-flex">
+                                    <div class="me-3"><img src="{% static 'img/icon-blazer.png' %}" class="img-fluid rounded w-75" alt="Пошив костюма"></div>
+                                    <div>
+                                        <h4>Пошив костюма на заказ (мужского и женского)</h4>
+                                        <p>Классические, деловые и неформальные костюмы из шерсти, твида и кашемира</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex">
+                                    <div class="me-3"><img src="{% static 'img/icon-dress.png' %}" class="img-fluid rounded w-75" alt="Пошив платья"></div>
+                                    <div>
+                                        <h4>Пошив платья на заказ</h4>
+                                        <p>От вечерних и свадебных платьев до повседневных моделей. Реализую вашу идею.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex">
+                                   <div class="me-3"><img src="{% static 'img/coat1.png' %}" class="img-fluid rounded w-75" alt="Пошив пальто"></div>
+                                    <div>
+                                        <h4>Пошив пальто и курток на заказ</h4>
+                                        <p>Тренчи, шерстяные пальто и кожаные куртки, которые согреют и подчеркнут стиль.</p>
+                                    </div>
+                                </div>
+                            </div>
+                              <div class="col-md-6">
+                                <div class="d-flex">
+                                   <div class="me-3"><img src="{% static 'img/skirt.png' %}" class="img-fluid rounded w-75" alt="Пошив пальто"></div>
+                                    <div>
+                                        <h4>Пошив другой одежды на заказ</h4>
+                                        <p>Юбки, брюки, рубашки и белье по вашему эскизу. Долговечность и внимание к деталям.</p>
+                                    </div>
+                                </div>
+                            </div>
+<h5 class="text-secondary">Работаю с лучшими тканями для пошива одежды на заказ из Италии. Более 200 образцов в ателье.</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="position-relative rounded">
+                        <div class="rounded" style="margin-top: 40px;">
+                            <div class="row g-0">
+                                <div class="col-lg-12">
+                                    <div class="rounded mb-4">
+                                        <img src="{% static 'img/about.jpg' %}" class="img-fluid rounded w-100" alt="">
+                                    </div>
+                                    <div class="row gx-4 gy-0">
+                                        <div class="col-6">
+                                            <div class="counter-item bg-primary rounded text-center p-4 h-100">
+                                                <div class="counter-item-icon mx-auto mb-3">
+                                                    <i class="fas fa-thumbs-up fa-3x text-white"></i>
+                                                </div>
+                                                <div class="counter-counting mb-3">
+                                                    <span class="text-white fs-2 fw-bold" data-toggle="counter-up">100</span>
+                                                    <span class="h1 fw-bold text-white"> +</span>
+                                                </div>
+                                                <h5 class="text-white mb-0">довольных клиентов</h5>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="counter-item bg-dark rounded text-center p-4 h-100">
+                                                <div class="counter-item-icon mx-auto mb-3">
+                                                    <i class="fas fa-certificate fa-3x text-white"></i>
+                                                </div>
+                                                <div class="counter-counting mb-3">
+                                                    <span class="text-white fs-2 fw-bold" data-toggle="counter-up">200</span>
+                                                    <span class="h1 fw-bold text-white"> +</span>
+                                                </div>
+                                                <h5 class="text-white mb-0">пошито заказов</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rounded bg-primary p-4 position-absolute d-flex justify-content-center" style="width: 90%; height: 80px; top: -40px; left: 50%; transform: translateX(-50%);">
+                            <h3 class="mb-0 text-white">более 20 лет опыта</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
 
         <!-- Feature Start -->
         <div class="container-fluid feature py-5">
@@ -246,102 +290,7 @@
         </div>
         <!-- Feature End -->
 
-        <!-- About Start -->
-        <div class="container-fluid about pb-5">
-            <div class="container pb-5">
-                <div class="row g-5">
-                    <div class="col-xl-6 wow fadeInUp" data-wow-delay="0.2s">
-                        <div>
-                            <h4 class="text-primary">About Waterland</h4>
-                            <h1 class="display-5 mb-4">The Best Theme & Amusement Park For Your Family</h1>
-                            <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis eligendi illum inventore maiores incidunt vero id. Est ipsam, distinctio veritatis earum inventore ab fugit officiis ut ullam, laudantium facere sapiente?
-                            </p>
-                            <div class="row g-4">
-                                <div class="col-md-6">
-                                    <div class="d-flex">
-                                        <div class="me-3"><i class="fas fa-glass-cheers fa-3x text-primary"></i></div>
-                                        <div>
-                                            <h4>Food & Drinks</h4>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="d-flex">
-                                        <div class="me-3"><i class="fas fa-dot-circle fa-3x text-primary"></i></div>
-                                        <div>
-                                            <h4>Many Attractions</h4>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="d-flex">
-                                        <div class="me-3"><i class="fas fa-hand-holding-usd fa-3x text-primary"></i></div>
-                                        <div>
-                                            <h4>Affordable Price</h4>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="d-flex">
-                                        <div class="me-3"><i class="fas fa-lock fa-3x text-primary"></i></div>
-                                        <div>
-                                            <h4>Safety Lockers</h4>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 wow fadeInUp" data-wow-delay="0.4s">
-                        <div class="position-relative rounded">
-                            <div class="rounded" style="margin-top: 40px;">
-                                <div class="row g-0">
-                                    <div class="col-lg-12">
-                                        <div class="rounded mb-4">
-                                            <img src="img/about.jpg" class="img-fluid rounded w-100" alt="">
-                                        </div>
-                                        <div class="row gx-4 gy-0">
-                                            <div class="col-6">
-                                                <div class="counter-item bg-primary rounded text-center p-4 h-100">
-                                                    <div class="counter-item-icon mx-auto mb-3">
-                                                        <i class="fas fa-thumbs-up fa-3x text-white"></i>
-                                                    </div>
-                                                    <div class="counter-counting mb-3">
-                                                        <span class="text-white fs-2 fw-bold" data-toggle="counter-up">150</span>
-                                                        <span class="h1 fw-bold text-white">K +</span>
-                                                    </div>
-                                                    <h5 class="text-white mb-0">Happy Visitors</h5>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="counter-item bg-dark rounded text-center p-4 h-100">
-                                                    <div class="counter-item-icon mx-auto mb-3">
-                                                        <i class="fas fa-certificate fa-3x text-white"></i>
-                                                    </div>
-                                                    <div class="counter-counting mb-3">
-                                                        <span class="text-white fs-2 fw-bold" data-toggle="counter-up">122</span>
-                                                        <span class="h1 fw-bold text-white"> +</span>
-                                                    </div>
-                                                    <h5 class="text-white mb-0">Awwards Winning</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="rounded bg-primary p-4 position-absolute d-flex justify-content-center" style="width: 90%; height: 80px; top: -40px; left: 50%; transform: translateX(-50%);">
-                                <h3 class="mb-0 text-white">20 Years Experiance</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- About End -->
+
 
 
         <!-- Service Start -->
