@@ -94,7 +94,7 @@
                                     <p class="mb-4 fs-5">Индивидуальный пошив костюмов, платьев и пальто из итальянских тканей. Идеальная посадка по вашей фигуре.
                                     </p>
                                     <div class="d-flex flex-shrink-0">
-                                        <a class="btn btn-primary rounded-pill text-uppercase text-white py-3 px-5" href="#">Консультация</a>
+                                        <a class="btn btn-primary rounded-pill text-uppercase py-3 px-5" href="#">Консультация</a>
                                     </div>
                                 </div>
                             </div>
@@ -154,7 +154,7 @@
                         <div class="row g-4">
                             <div class="col-md-6">
                                 <div class="d-flex">
-                                    <div class="me-3"><img src="{% static 'img/icon-blazer.png' %}" class="img-fluid rounded w-75" alt="Пошив костюма"></div>
+                                    <div class="me-3"><img src="{% static 'img/suit.png' %}" class="img-fluid rounded w-100" alt="Пошив костюма"></div>
                                     <div>
                                         <h4>Пошив костюма на заказ (мужского и женского)</h4>
                                         <p>Классические, деловые и неформальные костюмы из шерсти, твида и кашемира</p>
@@ -163,7 +163,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="d-flex">
-                                    <div class="me-3"><img src="{% static 'img/icon-dress.png' %}" class="img-fluid rounded w-75" alt="Пошив платья"></div>
+                                    <div class="me-3"><img src="{% static 'img/dress.png' %}" class="img-fluid rounded w-100" alt="Пошив платья"></div>
                                     <div>
                                         <h4>Пошив платья на заказ</h4>
                                         <p>От вечерних и свадебных платьев до повседневных моделей. Реализую вашу идею.</p>
@@ -172,7 +172,11 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="d-flex">
-                                   <div class="me-3"><img src="{% static 'img/coat1.png' %}" class="img-fluid rounded w-75" alt="Пошив пальто"></div>
+  <div class="me-3">
+  <div class="bg-secondary rounded d-flex align-items-center justify-content-center text-light w-100" style="height: 150px;">
+    51*150
+  </div>
+</div>
                                     <div>
                                         <h4>Пошив пальто и курток на заказ</h4>
                                         <p>Тренчи, шерстяные пальто и кожаные куртки, которые согреют и подчеркнут стиль.</p>
@@ -181,14 +185,18 @@
                             </div>
                               <div class="col-md-6">
                                 <div class="d-flex">
-                                   <div class="me-3"><img src="{% static 'img/skirt.png' %}" class="img-fluid rounded w-75" alt="Пошив пальто"></div>
+                                   <div class="me-3">
+  <div class="bg-secondary rounded d-flex align-items-center justify-content-center text-light w-100" style="height: 150px;">
+    51*150
+  </div>
+</div>
                                     <div>
                                         <h4>Пошив другой одежды на заказ</h4>
                                         <p>Юбки, брюки, рубашки и белье по вашему эскизу. Долговечность и внимание к деталям.</p>
                                     </div>
                                 </div>
                             </div>
-<h5 class="text-secondary">Работаю с лучшими тканями для пошива одежды на заказ из Италии. Более 200 образцов в ателье.</h5>
+                        <h5 class="text-secondary">Работаю с лучшими тканями для пошива одежды на заказ из Италии. Более 200 образцов в ателье.</h5>
                         </div>
                     </div>
                 </div>
@@ -230,7 +238,7 @@
                             </div>
                         </div>
                         <div class="rounded bg-primary p-4 position-absolute d-flex justify-content-center" style="width: 90%; height: 80px; top: -40px; left: 50%; transform: translateX(-50%);">
-                            <h3 class="mb-0 text-white">более 20 лет опыта</h3>
+                            <h3 class="mb-0 text-white">10+ лет опыта</h3>
                         </div>
                     </div>
                 </div>
@@ -243,15 +251,14 @@
         <div class="container-fluid feature py-5">
             <div class="container py-5">
                 <div class="row g-4">
+                    <h3 class="text-secondary text-uppercase">Как создается ваш заказ</h3>
                     <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
                         <div class="feature-item">
                             <img src="{% static 'img/feature-1.jpg' %}" class="img-fluid rounded w-100" alt="Image">
                             <div class="feature-content p-4">
                                 <div class="feature-content-inner">
-                                    <h4 class="text-white">Best Pools</h4>
-                                    <p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis porro soluta voluptatum laborum mollitia blanditiis suscipit,
-                                    </p>
-                                    <a href="#" class="btn btn-primary rounded-pill py-2 px-4">Read More <i class="fa fa-arrow-right ms-1"></i></a>
+                                    <h4 class="text-white">1. Беседа и выбор ткани</h4>
+                                    <p class="text-white">Обсуждаем ваши пожелания, измеряю и помогаю подобрать идеальную ткань из нашей коллекции</p>
                                 </div>
                             </div>
 
@@ -259,13 +266,12 @@
                     </div>
                     <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
                         <div class="feature-item">
-                            <img src="img/feature-2.jpg" class="img-fluid rounded w-100" alt="Image">
+                            <img src="{% static 'img/feature-2.jpg' %}" class="img-fluid rounded w-100" alt="Image">
                             <div class="feature-content p-4">
                                 <div class="feature-content-inner">
-                                    <h4 class="text-white">Waterslides</h4>
-                                    <p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis porro soluta voluptatum laborum mollitia blanditiis suscipit,
+                                    <h4 class="text-white">2. Пошив и примерки</h4>
+                                    <p class="text-white">Создаю макет и провожу примерки, чтобы идеально подогнать будущую вещь по фигуре
                                     </p>
-                                    <a href="#" class="btn btn-primary rounded-pill py-2 px-4">Read More <i class="fa fa-arrow-right ms-1"></i></a>
                                 </div>
                             </div>
 
@@ -273,13 +279,12 @@
                     </div>
                     <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
                         <div class="feature-item">
-                            <img src="img/feature-3.jpg" class="img-fluid rounded w-100" alt="Image">
+                            <img src="{% static 'img/feature-3.jpg' %}" class="img-fluid rounded w-100" alt="Image">
                             <div class="feature-content p-4">
                                 <div class="feature-content-inner">
-                                    <h4 class="text-white">River Rides</h4>
-                                    <p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis porro soluta voluptatum laborum mollitia blanditiis suscipit,
+                                    <h4 class="text-white">3. Получение результата</h4>
+                                    <p class="text-white">Вы наслаждаетесь безупречной посадкой, качеством и комплиментами в ваш адрес
                                     </p>
-                                    <a href="#" class="btn btn-primary rounded-pill py-2 px-4">Read More <i class="fa fa-arrow-right ms-1"></i></a>
                                 </div>
                             </div>
 
@@ -290,77 +295,34 @@
         </div>
         <!-- Feature End -->
 
-
-
-
         <!-- Service Start -->
         <div class="container-fluid service py-5">
             <div class="container service-section py-5">
                 <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
-                    <h4 class="text-primary">Our Service</h4>
-                    <h1 class="display-5 text-white mb-4">Explore Waterland Park service</h1>
-                    <p class="mb-0 text-white">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur adipisci facilis cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt sint dolorem autem obcaecati, ipsam mollitia hic.
+                    <h4 class="text-primary text-uppercase">Готовы создать свою идеальную вещь?</h4>
+                    <h1 class="display-5 text-white mb-4">Свяжитесь со мной в Telegram</h1>
+                    <p class="mb-0 text-white">это самый быстрый способ обсудить ваш будущий заказ и записаться на первую встречу
                     </p>
                 </div>
                 <div class="row g-4">
                     <div class="col-0 col-md-1 col-lg-2 col-xl-2"></div>
                     <div class="col-md-10 col-lg-8 col-xl-8 wow fadeInUp" data-wow-delay="0.2s">
                         <div class="service-days p-4">
-                            <div class="py-2 border-bottom border-top d-flex align-items-center justify-content-between flex-wrap"><h4 class="mb-0 pb-2 pb-sm-0">Monday - Friday</h4> <p class="mb-0"><i class="fas fa-clock text-primary me-2"></i>11:00 AM - 16:00 PM</p></div>
-                            <div class="py-2 border-bottom d-flex align-items-center justify-content-between flex-shrink-1 flex-wrap"><h4 class="mb-0 pb-2 pb-sm-0">Saturday - Sunday</h4> <p class="mb-0"><i class="fas fa-clock text-primary me-2"></i>09:00 AM - 17:00 PM</p></div>
-                            <div class="py-2 border-bottom d-flex align-items-center justify-content-between flex-shrink-1 flex-wrap"><h4 class="mb-0">Holiday</h4> <p class="mb-0"><i class="fas fa-clock text-primary me-2"></i>09:00 AM - 17:00 PM</p></div>
+                            <div class="py-2 d-flex align-items-center justify-content-between flex-wrap"><h4 class="mb-0 pb-2 pb-sm-0">В чате вы сможете:</h4></div>
+                            <div class="py-2 d-flex align-items-center justify-content-between flex-shrink-1 flex-wrap"><h4 class="mb-0 pb-2 pb-sm-0"><i class="fa fa-check text-primary me-2"></i>Задать любые вопросы о процессе и материалах</h4></div>
+                            <div class="py-2 d-flex align-items-center justify-content-between flex-shrink-1 flex-wrap"><h4 class="mb-0"><i class="fa fa-check text-primary me-2"></i>Узнать актуальное время для записи</h4></div>
+                            <div class="py-2 d-flex align-items-center justify-content-between flex-shrink-1 flex-wrap"><h4 class="mb-0"><i class="fa fa-check text-primary me-2"></i>Посмотреть примеры наших работ</h4></div>
+                            <div class="d-flex flex-shrink-0">
+                                        <a class="btn btn-primary rounded-pill text-uppercase py-3 px-5" href="#">Телеграм</a>
+                                    </div>
                         </div>
                     </div>
                     <div class="col-0 col-md-1 col-lg-2 col-xl-2"></div>
 
-                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
-                        <div class="service-item p-4">
-                            <div class="service-content">
-                                <div class="mb-4">
-                                    <i class="fas fa-home fa-4x"></i>
-                                </div>
-                                <a href="#" class="h4 d-inline-block mb-3">Private Gazebo</a>
-                                <p class="mb-0">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet vel beatae numquam.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.4s">
-                        <div class="service-item p-4">
-                            <div class="service-content">
-                                <div class="mb-4">
-                                    <i class="fas fa-utensils fa-4x"></i>
-                                </div>
-                                <a href="#" class="h4 d-inline-block mb-3">Delicious Food</a>
-                                <p class="mb-0">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet vel beatae numquam.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.6s">
-                        <div class="service-item p-4">
-                            <div class="service-content">
-                                <div class="mb-4">
-                                    <i class="fas fa-door-closed fa-4x"></i>
-                                </div>
-                                <a href="#" class="h4 d-inline-block mb-3">Safety Lockers</a>
-                                <p class="mb-0">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet vel beatae numquam.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.8s">
-                        <div class="service-item p-4">
-                            <div class="service-content">
-                                <div class="mb-4">
-                                    <i class="fas fa-swimming-pool fa-4x"></i>
-                                </div>
-                                <a href="#" class="h4 d-inline-block mb-3">River Rides</a>
-                                <p class="mb-0">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet vel beatae numquam.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+
+
+
+
                 </div>
             </div>
         </div>
