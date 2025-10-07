@@ -1,7 +1,12 @@
 from django.shortcuts import render
+from .forms import CustomForm
 
 
 def index(request):
+    if request.method == "POST":
+        form = CustomForm(request.POST)
+        if form.is_valid():
+            group = int(request.POST.get('group'))
     return render(request, 'index.html')
 
 

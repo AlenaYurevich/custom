@@ -36,8 +36,9 @@
 }
 /*** Button Start ***/
 .btn {
-    font-weight: 600;
+    font-weight: 400;
     transition: .5s;
+    letter-spacing: 2px;
 }
 
 .btn-square {
@@ -82,14 +83,10 @@
     border: none;
 }*/
 .btn.btn-primary {
-    color: var(--bs-white);
-    border: none;
-    text-shadow:
-        0 0 1px #cfc09f,
-        0 0 2px #cfc09f,
-        0 0 4px rgba(104, 89, 53, 0.7);
+   border: none;
 }
 .btn.btn-primary:hover {
+    color: var(--bs-white);
     background: var(--bs-dark);
 }
 
