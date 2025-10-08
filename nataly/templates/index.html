@@ -30,6 +30,7 @@
     </head>
 
     <body>
+
         <!-- Spinner Start -->
         <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
             <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
@@ -101,53 +102,96 @@
                             <div class="col-xl-5 fadeInRight animated" data-animation="fadeInRight" data-delay="1s" style="animation-delay: 1s;">
                                 <div class="ticket-form p-5">
                                     <h2 class="text-dark text-uppercase mb-4">Расчет стоимости пошива</h2>
-                                    <form>
+                                    <form method="POST" class="CustomForm">{% csrf_token %}
                                         <div class="row g-4">
                                             <div class="col-12">
-                                                <select class="form-select border-0 py-2" aria-label="Default select example">
-                                                    <option selected>Группа изделий</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                </select>
+                                                {{ form.group }}
                                             </div>
                                             <div class="col-12">
-                                                <select class="form-select border-0 py-2" aria-label="Default select example">
-                                                    <option selected>Вид изделия</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                </select>
+                                                {{ form.product_type }}
+                                                {{ form.product_type.error_messages }}
                                             </div>
-                                            <div class="col-12 col-xl-6">
-                                                <select class="form-select border-0 py-2" aria-label="Default select example">
-                                                    <option selected>Группа материалов</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-12 col-xl-6">
-                                                <select class="form-select border-0 py-2" aria-label="Default select example">
-                                                    <option selected>Размер</option>
-                                                    <option value="1">взрослый</option>
-                                                    <option value="2">детский</option>
-                                                </select>
-                                            </div>
+<!--                                            <div class="col-12 col-xl-6">-->
+<!--                                                <select class="form-select border-0 py-2" aria-label="Default select example">-->
+<!--                                                    <option selected>Группа материалов</option>-->
+<!--                                                    <option value="1">1</option>-->
+<!--                                                    <option value="2">2</option>-->
+<!--                                                    <option value="3">3</option>-->
+<!--                                                </select>-->
+<!--                                            </div>-->
+<!--                                            <div class="col-12 col-xl-6">-->
+<!--                                                <select class="form-select border-0 py-2" aria-label="Default select example">-->
+<!--                                                    <option selected>Размер</option>-->
+<!--                                                    <option value="1">взрослый</option>-->
+<!--                                                    <option value="2">детский</option>-->
+<!--                                                </select>-->
+<!--                                            </div>-->
 
-                                            <div class="col-12">
-                                                <select class="form-select border-0 py-2" aria-label="Default select example">
-                                                    <option selected>Усложняющие элементы</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                </select>
-                                            </div>
+<!--                                            <div class="col-12">-->
+<!--                                                <select class="form-select border-0 py-2" aria-label="Default select example">-->
+<!--                                                    <option selected>Усложняющие элементы</option>-->
+<!--                                                    <option value="1">1</option>-->
+<!--                                                    <option value="2">2</option>-->
+<!--                                                    <option value="3">3</option>-->
+<!--                                                </select>-->
+<!--                                            </div>-->
                                             <div class="col-12">
                                                 <button type="button" class="btn btn-primary w-100 py-2 px-5">Рассчитать</button>
                                             </div>
                                         </div>
                                     </form>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script>
+ $(document).ready(function() {
+    // Функция для загрузки типов
+    function loadProductTypes(groupId) {
+        var $typeField = $('#id_type');
+
+        if (groupId === '0') {
+            $typeField.html('<option value="">Сначала выберите группу</option>').prop('disabled', true);
+            return;
+        }
+
+        // Показываем индикатор загрузки
+        $typeField.html('<option value="">Загрузка типов...</option>').prop('disabled', false);
+
+        // AJAX запрос для получения типов
+        $.ajax({
+            url: '/get-product-types/',
+            data: {
+                'group_id': groupId
+            },
+            dataType: 'json',
+            success: function(data) {
+                if (data.types && data.types.length > 0) {
+                    var options = '<option value="">Выберите тип</option>';
+                    $.each(data.types, function(index, type) {
+                        options += '<option value="' + type[0] + '">' + type[1] + '</option>';
+                    });
+                    $typeField.html(options);
+                } else {
+                    $typeField.html('<option value="">Нет доступных типов для этой группы</option>');
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('Ошибка загрузки типов:', error);
+                $typeField.html('<option value="">Ошибка загрузки данных</option>');
+            }
+        });
+    }
+
+    // Обработчик изменения группы
+    $('#id_group').change(function() {
+        var selectedGroupId = $(this).val();
+        loadProductTypes(selectedGroupId);
+    });
+
+    // Инициализация при загрузке страницы
+    var initialGroupId = $('#id_group').val();
+    loadProductTypes(initialGroupId);
+});
+</script>
+
                                 </div>
                             </div>
                         </div>
@@ -514,6 +558,7 @@
 
     <!-- Template Javascript -->
     <script src="{% static 'js/main.js' %}"></script>
+
     </body>
 
 </html>
