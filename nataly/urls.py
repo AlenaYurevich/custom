@@ -24,7 +24,6 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='home'),
-    path('get-product-types/', views.GetProductTypesView.as_view(), name='get_product_types'),
     path('sitemap.xml', TemplateView.as_view(template_name='sitemap.xml', content_type='application/xml')),
     path('robots.txt', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
