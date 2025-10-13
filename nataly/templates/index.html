@@ -67,8 +67,8 @@
                         <a href="contact.html" class="nav-item nav-link">Контакты</a>
                     </div>
                     <div class="team-icon d-none d-xl-flex justify-content-center me-3">
-                        <a class="btn btn-square btn-light rounded-circle mx-1" href=""><i class="fab fa-instagram"></i></a>
-                        <a class="btn btn-square btn-light rounded-circle mx-1" href=""><i class="fab fa-telegram"></i></a>
+                        <a class="btn btn-square btn-light rounded-circle mx-1" href=""><i class="fab fa-instagram" title="Подпишись на мой Instagram"></i></a>
+                        <a class="btn btn-square btn-light rounded-circle mx-1" href=""><i class="fab fa-telegram" title="Напиши мне в Telegram"></i></a>
                     </div>
                     <a href="#" class="btn btn-primary rounded-pill py-2 px-4 flex-shrink-0">Напиши мне</a>
                 </div>
@@ -99,10 +99,10 @@
                                     <h2 class="text-dark text-uppercase mb-4">Расчет стоимости пошива</h2>
                                     <form method="POST" class="CustomForm">{% csrf_token %}
                                         <div class="row g-4">
-                                            <div class="col-12">
-                                                {{ form.group }}
-                                                {{ form.group.errors }}
-                                            </div>
+<!--                                            <div class="col-12">-->
+<!--                                                {{ form.group }}-->
+<!--                                                {{ form.group.errors }}-->
+<!--                                            </div>-->
                                             <div class="col-12">
                                                 {{ form.type }}
                                                 {{ form.type.errors }}
@@ -179,7 +179,7 @@ function closeFabricPopover() {
                         <div class="row g-4">
                             <div class="col-md-6">
                                 <div class="d-flex">
-                                    <div class="me-3"><img src="{% static 'img/suit.png' %}" class="img-fluid rounded w-100" alt="Пошив костюма"></div>
+                                    <div class="me-3"><img src="{% static 'img/suit1.png' %}" class="img-fluid rounded w-100" alt="Пошив костюма на заказ в Минске"></div>
                                     <div>
                                         <h4>Пошив костюма на заказ (мужского и женского)</h4>
                                         <p>Классические, деловые и неформальные костюмы из шерсти, твида и кашемира</p>
@@ -188,7 +188,7 @@ function closeFabricPopover() {
                             </div>
                             <div class="col-md-6">
                                 <div class="d-flex">
-                                    <div class="me-3"><img src="{% static 'img/dress.png' %}" class="img-fluid rounded w-100" alt="Пошив платья"></div>
+                                    <div class="me-3"><img src="{% static 'img/dress1.png' %}" class="img-fluid rounded w-100" alt="Пошив платья на заказ в Минске"></div>
                                     <div>
                                         <h4>Пошив платья на заказ</h4>
                                         <p>От вечерних и свадебных платьев до повседневных моделей. Реализую вашу идею.</p>
@@ -197,11 +197,7 @@ function closeFabricPopover() {
                             </div>
                             <div class="col-md-6">
                                 <div class="d-flex">
-  <div class="me-3">
-  <div class="bg-secondary rounded d-flex align-items-center justify-content-center text-light w-100" style="height: 150px;">
-    51*150
-  </div>
-</div>
+                                    <div class="me-3"><img src="{% static 'img/coat1.png' %}" class="img-fluid rounded w-100" alt="Пошив пальто на заказ в Минске"></div>
                                     <div>
                                         <h4>Пошив пальто и курток на заказ</h4>
                                         <p>Тренчи, шерстяные пальто и кожаные куртки, которые согреют и подчеркнут стиль.</p>
@@ -210,11 +206,7 @@ function closeFabricPopover() {
                             </div>
                               <div class="col-md-6">
                                 <div class="d-flex">
-                                   <div class="me-3">
-  <div class="bg-secondary rounded d-flex align-items-center justify-content-center text-light w-100" style="height: 150px;">
-    51*150
-  </div>
-</div>
+                                    <div class="me-3"><img src="{% static 'img/shirt1.png' %}" class="img-fluid rounded w-100" alt="Пошив рубашки, юбки на заказ в Минске"></div>
                                     <div>
                                         <h4>Пошив другой одежды на заказ</h4>
                                         <p>Юбки, брюки, рубашки и белье по вашему эскизу. Долговечность и внимание к деталям.</p>
@@ -454,6 +446,7 @@ function closeFabricPopover() {
                     <div class="col-md-6 col-lg-6 col-xl-4">
                         <div class="footer-item">
                             <h4 class="text-white mb-4">Страницы</h4>
+                             <a href="#"><i class="fas fa-angle-right me-2"></i> Главная</a>
                             <a href="#"><i class="fas fa-angle-right me-2"></i> Обо мне</a>
                             <a href="#"><i class="fas fa-angle-right me-2"></i> Услуги</a>
                             <a href="#"><i class="fas fa-angle-right me-2"></i> Каталог</a>
@@ -490,7 +483,7 @@ function closeFabricPopover() {
             <div class="container">
                 <div class="row g-4 align-items-center">
                     <div class="col-md-6 text-center text-md-start mb-md-0">
-                        <span class="text-body"><a href="#" class="border-bottom text-white">2025 <i class="fas fa-copyright text-light me-2"></i>Your Site Name</a></span>
+                        <span class="text-body"><a href="#" class="border-bottom text-white">2025 <i class="fas fa-copyright text-light me-2"></i>nposhiv.minsk.by</a></span>
                     </div>
                     <div class="col-md-6 text-center text-md-end text-body">
                         <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
@@ -517,10 +510,9 @@ function closeFabricPopover() {
     <script src="{% static 'lib/counterup/counterup.min.js' %}"></script>
     <script src="{% static 'lib/lightbox/js/lightbox.min.js' %}"></script>
     <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
-
-
     <!-- Template Javascript -->
     <script src="{% static 'js/main.js' %}"></script>
+
 
     </body>
 

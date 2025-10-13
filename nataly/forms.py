@@ -1,14 +1,14 @@
 from django import forms
 
 
-Choices_group = [(0, f'Группа изделий'),
-                 (1, f'Мужская и женская верхняя одежда'),
-                 (2, f'Женская легкая одежда '),
-                 (3, f'Мужская легкая одежда'),
-                 (4, f'Детская верхняя одежда'),
-                 (5, f'Легкая одежда для девочек'),
-                 (6, f'Легкая одежда для мальчиков'),
-                 ]
+# Choices_group = [(0, f'Группа изделий'),
+#                  (1, f'Мужская и женская верхняя одежда'),
+#                  (2, f'Женская легкая одежда '),
+#                  (3, f'Мужская легкая одежда'),
+#                  (4, f'Детская верхняя одежда'),
+#                  (5, f'Легкая одежда для девочек'),
+#                  (6, f'Легкая одежда для мальчиков'),
+#                  ]
 
 
 Choices_type = [(0, f'Тип изделия'),
@@ -48,15 +48,15 @@ Choices_element = [(0, f'Усложняющие элементы'),
 
 
 class CustomForm(forms.Form):
-    group = forms.TypedChoiceField(
-        choices=Choices_group,
-
-        widget=forms.Select(attrs={
-            'class': "form-select border-0 py-2 text-wrap",
-            'autofocus': 'autofocus',
-            'aria-label': "Default select example",
-        })
-    )
+    # group = forms.TypedChoiceField(
+    #     choices=Choices_group,
+    #
+    #     widget=forms.Select(attrs={
+    #         'class': "form-select border-0 py-2 text-wrap",
+    #         'autofocus': 'autofocus',
+    #         'aria-label': "Default select example",
+    #     })
+    # )
     type = forms.TypedChoiceField(
         choices=Choices_type,
         widget=forms.Select(attrs={

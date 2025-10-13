@@ -7,13 +7,13 @@ def index(request):
         form = CustomForm(request.POST)
         if form.is_valid():
             # Получаем очищенные данные из формы
-            group = form.cleaned_data['group']
+            # group = form.cleaned_data['group']
             product_type = form.cleaned_data['type']
             product_fabric = form.cleaned_data['fabric']
             product_size = form.cleaned_data['size']
             product_element = form.cleaned_data['elements']
             # Выводим для отладки
-            print('Group:', group)
+            # print('Group:', group)
             print('Type:', product_type)
             print('Fabric:', product_fabric)
             print('Size:', product_size)
@@ -26,7 +26,7 @@ def index(request):
 
             context = {
                 'form': form,
-                'group': group,
+                # 'group': group,
                 'product_type': product_type,
                 'product_fabric': product_fabric,
                 'product_size': product_size,
