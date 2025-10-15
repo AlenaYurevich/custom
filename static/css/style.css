@@ -281,6 +281,7 @@
 
 .carousel-caption .ticket-form {
     background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 10px;
 }
 
@@ -943,5 +944,22 @@
     background: var(--bs-dark);
 }
 /*** copyright end ***/
+
+.result-card {
+    animation-duration: 0.8s;
+}
+
+.card {
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.card-header {
+    border-radius: 0 !important;
+}
+
+.animate__animated {
+    animation-duration: 0.8s;
+}
 
 

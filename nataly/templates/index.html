@@ -99,10 +99,6 @@
                                     <h2 class="text-dark text-uppercase mb-4">Расчет стоимости пошива</h2>
                                     <form method="POST" class="CustomForm">{% csrf_token %}
                                         <div class="row g-4">
-<!--                                            <div class="col-12">-->
-<!--                                                {{ form.group }}-->
-<!--                                                {{ form.group.errors }}-->
-<!--                                            </div>-->
                                             <div class="col-12">
                                                 {{ form.type }}
                                                 {{ form.type.errors }}
@@ -111,6 +107,7 @@
                                                 {{ form.fabric }}
                                                 {{ form.fabric.errors }}
     <i class="bi bi-info-circle text-dark ms-2"
+       tabindex="0" data-bs-trigger="focus"
        data-bs-toggle="popover"
        data-bs-placement="top"
        data-bs-html="true"
@@ -122,27 +119,8 @@
        <p>3 - Хлопок, лен: пальтовые, костюмные ткани, махровая ткань, батист. Болонья</p>
        <p>4 - Хлопок, лен: плательные, сорочечные и корсетные ткани</p>
        <button type='button' class='btn-close' data-bs-toggle='popover' onclick='closeFabricPopover()'></button>
-       <a href='/catalog/fabrics/' class='btn btn-sm btn-primary mt-2'>подробнее</a>"></i>
+       <a href='/catalog/fabrics/' class='btn btn-sm btn-primary w-75 mt-2'>подробнее</a>"></i>
 </div>
-
-<script>
-// Активируем popover
-document.addEventListener('DOMContentLoaded', function() {
-    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
-    var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-        return new bootstrap.Popover(popoverTriggerEl)
-    })
-});
-</script>
-
-<script>
-function closeFabricPopover() {
-    var popover = bootstrap.Popover.getInstance(document.querySelector('[data-bs-toggle="popover"]'));
-    if (popover) {
-        popover.hide();
-    }
-}
-</script>
                                             <div class="col-12 col-xl-6">
                                                {{ form.size }}
                                                {{ form.size.errors }}
@@ -156,7 +134,62 @@ function closeFabricPopover() {
                                             </div>
                                         </div>
                                     </form>
-                                </div>
+ {% if success %}
+    <div class="result-card mt-5 animate__animated animate__fadeInUp">
+        <div class="card border-0 shadow-lg">
+            <div class="card-body p-2">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="rounded p-2">
+                            <h6 class="text-muted mb-2">Стоимость пошива:</h6>
+                            <div class="display-6 fw-bold text-secondary mb-2">
+                                {{ calculation_result }} руб.
+                            </div>
+                            <small class="text-muted">* Предварительный расчет</small>
+                            <small class="text-muted">Базовый коэффициент: {{ value_from_5th }}</small>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+<script>
+// Активируем popover
+document.addEventListener('DOMContentLoaded', function() {
+    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+    var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+        return new bootstrap.Popover(popoverTriggerEl)
+    });
+
+    // Плавная прокрутка к результату после расчета
+    {% if success %}
+    setTimeout(function() {
+        const resultElement = document.querySelector('.result-card');
+        if (resultElement) {
+            resultElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    }, 500);
+    {% endif %}
+});
+
+function closeFabricPopover() {
+    var popover = bootstrap.Popover.getInstance(document.querySelector('[data-bs-toggle="popover"]'));
+    if (popover) {
+        popover.hide();
+    }
+}
+</script>
+
+
+
+
+
                             </div>
                         </div>
                     </div>
