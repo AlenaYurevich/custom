@@ -3,6 +3,7 @@ from django.db import models
 
 class SiteSettings(models.Model):
     # Название настроек (для удобства в админке)
+    objects = None
     name = models.CharField(
         max_length=100,
         default="Настройки сайта",
