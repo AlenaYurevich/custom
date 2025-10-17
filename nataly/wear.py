@@ -79,7 +79,6 @@ def get_value_from_5th_column(product_type, fabric):
                             return float(value_str)
                         except (ValueError, TypeError):
                             return 0
-
     return 0
 
 
@@ -87,5 +86,4 @@ Choices_type = read_types(worksheet)
 
 
 def calculation(value_from_5th):
-
     return value_from_5th * 2
