@@ -44,7 +44,7 @@
             <nav class="navbar navbar-expand-lg navbar-light">
                 <a href="" class="navbar-brand p-0 d-flex align-items-center">
     <img src="{% static 'img/logo.png' %}" alt="Пошив на заказ" class="me-2">
-<!--        <h1 class="display-6 mb-0">Наталья Покрышко</h1>-->
+
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="fa fa-bars"></span>
@@ -195,7 +195,6 @@ function closeFabricPopover() {
                     </div>
                 </div>
             </div>
-
         </div>
         <!-- Carousel End -->
 
@@ -545,7 +544,23 @@ function closeFabricPopover() {
     <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
     <!-- Template Javascript -->
     <script src="{% static 'js/main.js' %}"></script>
-
+<script>
+{% if success %}
+// Прокрутка к форме после расчета
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+        const formElement = document.getElementById('calculationForm');
+        if (formElement) {
+            // Прокручиваем так, чтобы форма была видима, но не в самом верху
+            formElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center' // Измените на 'start', 'center' или 'end'
+            });
+        }
+    }, 500);
+});
+{% endif %}
+</script>
 
     </body>
 

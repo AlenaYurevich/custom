@@ -60,15 +60,6 @@ Choices_element = [(0, f'Усложняющие элементы'),
 
 
 class CustomForm(forms.Form):
-    # group = forms.TypedChoiceField(
-    #     choices=Choices_group,
-    #
-    #     widget=forms.Select(attrs={
-    #         'class': "form-select border-0 py-2 text-wrap",
-    #         'autofocus': 'autofocus',
-    #         'aria-label': "Default select example",
-    #     })
-    # )
     type = forms.TypedChoiceField(
         choices=Choices_type,
         widget=forms.Select(attrs={
