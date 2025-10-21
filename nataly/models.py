@@ -58,6 +58,15 @@ class SiteSettings(models.Model):
         verbose_name="Реклама в месяц, рублей"
     )
 
+    @classmethod
+    def load(cls):
+        """
+        Загружает единственный объект настроек.
+        Если объекта не существует, создает его со значениями по умолчанию.
+        """
+        obj, created = cls.objects.get_or_create(pk=1)
+        return obj
+
     class Meta:
         verbose_name = "настройки сайта"
         verbose_name_plural = "настройки сайта"
