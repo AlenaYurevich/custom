@@ -1,30 +1,24 @@
 from django import forms
-from .wear import Choices_type
+from .wear import Choices_type, Elements_type
 
 
-Choices_fabric = [(0, f'Тип ткани'),
-                  (1, f'1'),
-                  (2, f'2'),
-                  (3, f'3'),
-                  (4, f'4'),
+Choices_fabric = [(5, f'Тип ткани'),
+                  (0, f'0 - Шелковый бархат (на шелковой и хлопчатобумажной основе, вельвет синтетический'),
+                  (1, f'1 - Натуральные: шелк, кожа, замша, хлопчатобумажный бархат, трикотаж с ворсовой поверхностью'),
+                  (2, f'2 - Шерсть, в том числе с содержанием синтетических волокон, иск. мех, иск. кожа, иск. замша,'
+                      f' трикотаж, хлопч. кружево, хлопч. вельвет'),
+                  (3, f'3 - Хлопок, лен: пальтовые, костюмные ткани, махровая ткань, батист, болонья'),
+                  (4, f'4 - Хлопок, лен: плательные, сорочечные и корсетные ткани и аналогичные по сложности обработки')
                   ]
 
 
 Choices_size = [(0, f'Размер'),
                 (1, f'Взрослый'),
-                # (2, f'Детский:'),
+                (2, f'Детский, до 44 вкл.'),
                 # (3, f'30-34'),
                 # (4, f'36-40'),
                 # (5, f'40-44'),
                 ]
-
-
-Choices_element = [(0, f'Усложняющие элементы'),
-                   (1, f'нет'),
-                   (2, f' 1 ед.'),
-                   (3, f' 2 ед.'),
-                   (4, f' 3 ед.'),
-                   ]
 
 
 class CustomForm(forms.Form):
@@ -34,7 +28,6 @@ class CustomForm(forms.Form):
             'class': "form-select border-0 py-2 text-wrap",
             'autofocus': 'autofocus',
             'aria-label': "Default select example",
-            'placeholder': "111",
         })
     )
     fabric = forms.TypedChoiceField(
@@ -52,7 +45,7 @@ class CustomForm(forms.Form):
         })
     )
     elements = forms.TypedChoiceField(
-        choices=Choices_element,
+        choices=Elements_type,
         widget=forms.Select(attrs={
             'class': "form-select border-0 py-2 text-wrap",
             'aria-label': "Default select example",
