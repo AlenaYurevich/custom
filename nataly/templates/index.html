@@ -159,6 +159,19 @@ document.addEventListener('DOMContentLoaded', function() {
     var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
         return new bootstrap.Popover(popoverTriggerEl)
     });
+
+    // Плавная прокрутка к результату после расчета
+    {% if success %}
+    setTimeout(function() {
+        const resultElement = document.querySelector('.result-card');
+        if (resultElement) {
+            resultElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    }, 500);
+    {% endif %}
 });
 
 function closeFabricPopover() {
@@ -168,6 +181,11 @@ function closeFabricPopover() {
     }
 }
 </script>
+
+
+
+
+
                             </div>
                         </div>
                     </div>

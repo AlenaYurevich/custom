@@ -33,7 +33,7 @@ def read_types(wearsheet):
 
 def get_value_from_5th_column(product_type, fabric):
     """
-    Универсальная версия с улучшенной обработкой диапазонов ткани
+    Возвращает значение из 5-й колонки для указанного типа продукта и ткани
     """
     # Загружаем данные из кэша
     excel_data = load_excel_sheet('wear.xlsx')
@@ -49,7 +49,6 @@ def get_value_from_5th_column(product_type, fabric):
     search_fabric = '1' if apply_coefficient else fabric_str
 
     for i in range(3, rows + 1):
-        # Получаем значение из первой колонки
         cell_value = worksheet.cell(row=i, column=1).value
 
         # Если в первой колонке есть значение - это новый product_type
