@@ -15,12 +15,28 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.contrib.sitemaps.views import sitemap
 from django.urls import path, include
+from nataly.sitemaps import NatalyStaticSitemap
+
+
+# Импортируйте ваши собственные sitemaps
+# from .sitemaps import StaticSitemap  # пример
+
+# Создаем словарь sitemaps
+sitemaps = {
+    'static': NatalyStaticSitemap,
+    # 'dynamic': DynamicSitemap,
+}
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('nataly.urls')),  # Все URL приложения nataly
+    path("sitemap.xml", sitemap, {"sitemaps": sitemaps}, name="django.contrib.sitemaps.views.sitemap",)
 ]
 
 handler404 = 'nataly.views.handler404'
 handler500 = 'nataly.views.handler500'
+
+
