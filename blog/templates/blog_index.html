@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block seo %}
+<title>Блог о пошиве одежды на заказ Натальи Покрышко - страница {{ page_obj.number }}</title>
+<meta name="description" content="Статьи о нутрициологии, диетологии и физиологии для вашего здоровья. Объясняем простым языком расчет калорий, нутриенты и основы специализированного питания. Страница {{ page_obj.number }}">
+<meta name="keywords" content="нутрициология, диетология, нутриенты, расчет калорий, специализированное питание, физиология питания, основы нутрициологии, статьи о питании">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="{% url 'blog_index' %}">
+<meta property="og:url" content="https://nposhiv.by/blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="База знаний о питании: статьи от нутрициолога Елены Мишуты">
+<meta property="og:image" content="{% static 'images/elenamishuta.jpg' %}">
+<meta property="og:site_name" content="Пошив одежды на заказ в Минске">
+<meta property="og:description" content="Простые и понятные статьи о нутрициологии и физиологии. Узнайте все о расчете калорий, нутриентах и правильном питании для здоровья.">
+{% endblock %}
+{% block breadcrumb_header %}
+    {% include "breadcrumb_header.html" with breadcrumb_title="Блог" %}
+{% endblock %}
+{% block page_content %}
+
+        <!-- Blog Start -->
+        <div class="container-fluid blog py-5">
+            <div class="container py-5">
+                <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+                    <h4 class="text-secondary">Блог о пошиве на заказ</h4>
+                    <h1 class="display-5 mb-4">Последние новости и статьи</h1>
+                    <p class="mb-0">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur adipisci facilis cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt sint dolorem autem obcaecati, ipsam mollitia hic.
+                    </p>
+                </div>
+                <div class="row g-4">
+                     {% for post in page_obj %}
+                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="blog-item">
+                            <div class="blog-img">
+                                <a href="#">
+                                    <img src="{{ post.image_min.url }}" class="img-fluid w-100 rounded-top" alt="{{ post.alt }}">
+                                </a>
+                                <div class="blog-category py-2 px-4">Vacation</div>
+                                <div class="blog-date"><i class="fas fa-clock me-2"></i>August 19, 2025</div>
+                            </div>
+                            <div class="blog-content p-4">
+                                <a href="#" class="h4 d-inline-block mb-4">Why Children Dont Like Getting Out Of The Water</a>
+                                <p class="mb-4">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam aspernatur nam quidem porro sapiente, neque a quibusdam....
+                                </p>
+                                <a href="#" class="btn btn-primary rounded-pill py-2 px-4">Читать дальше <i class="fas fa-arrow-right ms-2"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                     {% endfor %}
+                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="blog-item">
+                            <div class="blog-img">
+                                <a href="#">
+                                    <img src="img/blog-3.jpg" class="img-fluid w-100 rounded-top" alt="Image">
+                                </a>
+                                <div class="blog-category py-2 px-4">Insight</div>
+                                <div class="blog-date"><i class="fas fa-clock me-2"></i>August 19, 2025</div>
+                            </div>
+                            <div class="blog-content p-4">
+                                <a href="#" class="h4 d-inline-block mb-4">5 Ways To Enjoy Waterland This Spring Break</a>
+                                <p class="mb-4">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam aspernatur nam quidem porro sapiente, neque a quibusdam....
+                                </p>
+                                <a href="#" class="btn btn-primary rounded-pill py-2 px-4">Read More <i class="fas fa-arrow-right ms-2"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
+                        <div class="blog-item">
+                            <div class="blog-img">
+                                <a href="#">
+                                    <img src="img/blog-1.jpg" class="img-fluid w-100 rounded-top" alt="Image">
+                                </a>
+                                <div class="blog-category py-2 px-4">Insight</div>
+                                <div class="blog-date"><i class="fas fa-clock me-2"></i>August 19, 2025</div>
+                            </div>
+                            <div class="blog-content p-4">
+                                <a href="#" class="h4 d-inline-block mb-4">3 Tips for Your Family Spring Break at Amusement Park</a>
+                                <p class="mb-4">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam aspernatur nam quidem porro sapiente, neque a quibusdam....
+                                </p>
+                                <a href="#" class="btn btn-primary rounded-pill py-2 px-4">Read More <i class="fas fa-arrow-right ms-2"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Blog End -->
+
+
+<main>
+<!-- section header -->
+<section class="blog">
+  <header>
+    <div class="container center">
+      <h1 class="animate-on-scroll delay-1"><a href="{% url 'blog_index' %}">База знаний</a></h1>
+      <p class="lead animate-on-scroll delay-2">Полезная информация от нутрициолога</p>
+    </div>
+  </header>
+</section>
+<section class='page_section blog'>
+            <div class="content_section container">
+                <div class="row">
+                	<div class="posts_block">
+                        {% for post in page_obj %}
+                        <div class="element col-md-6">
+                            <div class="blog_post">
+                                <div class="round_corners">
+                                	<div class="post_flex">
+                                        <img src="{{ post.image_min.url }}" alt="{{ post.alt }}" width="494">
+                                    </div>
+                                <h2><a class ="text-decoration-none" href="{% url 'blog_detail' slug=post.slug %}">{{ post.title }}</a></h2>
+                                <small>{{ post.created_on }}</small>
+                                <p>{{ post.description }} <a class ="text-info text-decoration-none" href="{% url 'blog_detail' slug=post.slug %}">   читать дальше ...</a></p>
+                                </div>
+                        </div><!--//blog_post-->
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+</section>
+
+  <div class="container">
+  <div class="pagination">
+  <span class="step-links">
+    {% if page_obj.has_previous %}
+     <a href="?page=1">&laquo;</a>
+     <a href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a>
+    {% endif %}
+
+    <span class="current">
+<!--      Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}-->
+      Страница {{ page_obj.number }}
+    </span>
+
+    {% if page_obj.has_next %}
+      <a href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a>
+      <a href="?page={{ page_obj.paginator.num_pages }}">&raquo;</a>
+    {% endif %}
+  </span>
+  </div>
+ </div>
+
+</main>
+ {% endblock %}
