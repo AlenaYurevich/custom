@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
-from django.urls import path
+from django.urls import path, include
 from django.views.generic import TemplateView
 from django.conf import settings
 from django.conf.urls.static import static
@@ -25,6 +25,6 @@ from . import views
 urlpatterns = [
     path('', views.index, name='home'),
     path('catalog', views.catalog, name='catalog'),
-    # path('sitemap.xml', TemplateView.as_view(template_name='sitemap.xml', content_type='application/xml')),
+    path('blog', include('blog.urls')),
     path('robots.txt', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

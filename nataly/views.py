@@ -42,7 +42,7 @@ def catalog(request):
     return render(request, 'catalog.html')
 
 
-def handler404(request, exception):
+def handler404(request, exeption):
     return render(request, '404.html', status=404)
 
 
