@@ -17,17 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.contrib.sitemaps.views import sitemap
 from django.urls import path, include
-from nataly.sitemaps import NatalyStaticSitemap
-
-
-# Импортируйте ваши собственные sitemaps
-# from .sitemaps import StaticSitemap  # пример
-
-# Создаем словарь sitemaps
-sitemaps = {
-    'static': NatalyStaticSitemap,
-    # 'dynamic': DynamicSitemap,
-}
+from django.conf import settings
+from django.conf.urls.static import static
+from .sitemaps import sitemaps  # пример
 
 
 urlpatterns = [
@@ -35,8 +27,8 @@ urlpatterns = [
     path('', include('nataly.urls')),  # Все URL приложения nataly
     path("sitemap.xml", sitemap, {"sitemaps": sitemaps}, name="django.contrib.sitemaps.views.sitemap",)
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = 'nataly.views.handler404'
 handler500 = 'nataly.views.handler500'
-
-

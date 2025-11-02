@@ -36,8 +36,9 @@
 }
 /*** Button Start ***/
 .btn {
-    font-weight: 600;
+    font-weight: 400;
     transition: .5s;
+    letter-spacing: 2px;
 }
 
 .btn-square {
@@ -82,14 +83,10 @@
     border: none;
 }*/
 .btn.btn-primary {
-    color: var(--bs-white);
-    border: none;
-    text-shadow:
-        0 0 0px #666,
-        0 0 0px #666,
-        0 0 4px rgba(102, 102, 102, 0.7);
+   border: none;
 }
 .btn.btn-primary:hover {
+    color: var(--bs-white);
     background: var(--bs-dark);
 }
 
@@ -150,7 +147,8 @@
 }
 
 .sticky-top .navbar-light .navbar-brand img {
-    max-height: 50px;
+    /*max-height: 50px;*/
+    max-height: 70px;
 }
 
 .navbar .dropdown-toggle::after {
@@ -276,19 +274,14 @@
     height: 100%;
     left: 0;
     bottom: 0;
-    /*background: rgba(0, 0, 0, .4);*/
-    background:
-        radial-gradient(
-            ellipse at center,
-            rgba(255, 255, 255, 0.2) 0%,
-            rgba(0, 0, 0, 0.5) 70%
-        );
+    background: rgba(0, 0, 0, .4);
     display: flex;
     align-items: center;
 }
 
 .carousel-caption .ticket-form {
     background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 10px;
 }
 
@@ -351,7 +344,7 @@
     left: 0;
     margin-top: 0;
     margin-right: 0; 
-    background: rgba(0, 0, 0, 0.7); 
+    background: rgba(0, 0, 0, 0.5);
     border-radius: 10px;
     z-index: 2;
 }
@@ -367,7 +360,7 @@
 .service {
     position: relative;
     overflow: hidden;
-    background-image: url(../img/carousel-1.jpg);
+    background-image: url(/static/img/carousel-1.png);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -951,5 +944,22 @@
     background: var(--bs-dark);
 }
 /*** copyright end ***/
+
+.result-card {
+    animation-duration: 0.8s;
+}
+
+.card {
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.card-header {
+    border-radius: 0 !important;
+}
+
+.animate__animated {
+    animation-duration: 0.8s;
+}
 
 
