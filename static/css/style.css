@@ -311,7 +311,7 @@
 .bg-breadcrumb {
     position: relative;
     overflow: hidden;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/carousel-1.jpg);
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(/static/img/palazzo.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -443,7 +443,13 @@
     color: var(--bs-white);
 }
 /*** Service End ***/
-
+section, .section {
+    color: var(--default-color);
+    background-color: var(--background-color);
+    padding: 60px 0;
+    scroll-margin-top: 92px;
+    overflow: clip;
+}
 
 /*** Attractions Start ***/
 .attractions {
@@ -677,7 +683,51 @@
 .blog .blog-item .blog-content {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    background: var(--bs-light);
+    background: var(--bs-white);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+.blog-details {
+    padding-bottom: 30px;
+}
+.blog-details .article {
+    background-color: var(--bs-white);
+    padding: 30px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+.blog-details .title {
+    color: var(--bs-gray-dark);
+    font-size: 28px;
+    font-weight: 700;
+    padding: 0;
+    margin: 30px 0;
+}
+.blog-details .post-img {
+    margin: -30px -30px 20px -30px;
+    overflow: hidden;
+}
+.blog-details .content h3 {
+    font-size: 22px;
+    margin-top: 30px;
+    font-weight: bold;
+}
+.blog-details .meta-top {
+    margin-top: 20px;
+    color: var(--bs-gray);
+}
+.blog-details .meta-top ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+.widget-title {
+    color: var(--bs-gray);
+    font-size: 20px;
+    font-weight: 700;
+    padding: 0;
+    margin: 0 0 20px 0;
 }
 /*** Blog End ***/
 

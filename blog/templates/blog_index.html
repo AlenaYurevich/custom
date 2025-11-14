@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block seo %}
-<title>Блог о пошиве одежды на заказ Натальи Покрышко - страница {{ page_obj.number }}</title>
-<meta name="description" content="Статьи о нутрициологии, диетологии и физиологии для вашего здоровья. Объясняем простым языком расчет калорий, нутриенты и основы специализированного питания. Страница {{ page_obj.number }}">
-<meta name="keywords" content="нутрициология, диетология, нутриенты, расчет калорий, специализированное питание, физиология питания, основы нутрициологии, статьи о питании">
+<title>О пошиве одежды на заказ | Наталья Покрышко, Минск - страница {{ page_obj.number }}</title>
+<meta name="description" content="Здесь не будет конвейера. Только диалог, внимание к деталям и искусство воплощать в жизнь ту самую, единственную и неповторимую, версию вас. Страница {{ page_obj.number }}">
+<meta name="keywords" content="пошив на заказ минск эксклюзивная одежда индивидуальный пошив итальянские ткани роскошный гардероб luxury fashion искусство моды капсульный гардероб для стильных женщин одежда на заказ prêtàporter slowfashion люкс имидж женщины">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="{% url 'blog_index' %}">
 <meta property="og:url" content="https://nposhiv.by/blog">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Блог о пошиве одежды на заказ Натальи Покрышко - страница {{ page_obj.number }}">
-<meta property="og:image" content="{% static 'images/elenamishuta.jpg' %}">
+<meta property="og:title" content="О пошиве одежды на заказ. Наталья Покрышко - страница {{ page_obj.number }}">
+<meta property="og:image" content="{% static 'img/Natalia Pokryshko.jpg' %}">
 <meta property="og:site_name" content="Пошив одежды на заказ в Минске">
-<meta property="og:description" content="Простые и понятные статьи о нутрициологии и физиологии. Узнайте все о расчете калорий, нутриентах и правильном питании для здоровья.">
+<meta property="og:description" content="Здесь не будет конвейера. Только диалог, внимание к деталям и искусство воплощать в жизнь ту самую, единственную и неповторимую, версию вас.">
 {% endblock %}
 {% block breadcrumb_header %}
     {% include "breadcrumb_header.html" with breadcrumb_title="Блог" %}
@@ -23,7 +23,7 @@
             <div class="container py-5">
                 <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
                     <h4 class="text-secondary">Последние новости и статьи</h4>
-                    <h1 class="display-5 mb-4">Пошив на заказ</h1>
+                    <h1 class="display-5 mb-4 text-uppercase">Пошив одежды на заказ</h1>
                     <p class="mb-0">Устали от вещей, которые где-то жмут, а где-то дают складки? Не можете найти в магазинах нужный силуэт или качественную натуральную ткань?
 Мы решаем это раз и навсегда. Вы получаете не просто новую одежду, а идеальную посадку, уникальный дизайн и комфорт, который не сравнить с готовой одеждой.
                     </p>
@@ -73,5 +73,4 @@
   </span>
   </div>
  </div>
-
  {% endblock %}

@@ -51,9 +51,15 @@ class Post(models.Model):
         options={'quality': 80}
     )
 
+    # image_medium = ImageSpecField(
+    #     source='image',
+    #     processors=[ResizeToFill(800, 600)],
+    #     format='JPEG',
+    #     options={'quality': 85}
+    # )
     image_medium = ImageSpecField(
         source='image',
-        processors=[ResizeToFill(800, 600)],
+        processors=[ResizeToFill(832, 624)],
         format='JPEG',
         options={'quality': 85}
     )
