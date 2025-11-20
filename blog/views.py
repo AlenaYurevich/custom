@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Post, Category
+from .models import Post, Category, Tag
 from django.core.paginator import Paginator
 
 
@@ -33,3 +33,13 @@ def blog_category(request, category_slug):
         'posts': posts,  # здесь выводим посты Posts,
     }
     return render(request, 'blog_category.html', context)
+
+
+def posts_by_tag(request, tag_slug):
+    tag = Tag.objects.get(slug=tag_slug)
+    posts = Post.objects.filter(tags=tag)
+
+    return render(request, 'blog/blog_tag.html', {
+        'tag': tag,
+        'posts': posts
+    })

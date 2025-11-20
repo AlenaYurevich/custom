@@ -7,6 +7,7 @@ urlpatterns = [
     path('', views.blog_index, name='blog_index'),
     path('post/<slug:slug>/', views.blog_detail, name='blog_detail'),
     path('category/<slug:category_slug>/', views.blog_category, name='blog_category'),
+    path('tag/<slug:tag_slug>/', views.posts_by_tag, name='posts_by_tag'),
     path('ckeditor/', include('ckeditor_uploader.urls')),
 ]
 
