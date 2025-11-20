@@ -24,6 +24,14 @@ class Category(models.Model):
         return self.name
 
 
+class Tag(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+    slug = models.SlugField(unique=True)
+
+    def __str__(self):
+        return self.name
+
+
 class Post(models.Model):
     title = models.CharField(max_length=100)
     description = models.CharField(
@@ -80,6 +88,7 @@ class Post(models.Model):
     categories = models.ManyToManyField('Category', related_name='posts')
     slug = models.SlugField(max_length=250, unique=True, blank=True)
     order = models.PositiveIntegerField(default=0, db_index=True)
+    tags = models.ManyToManyField(Tag, blank=True)
 
     def get_absolute_url(self):
         return reverse('blog_detail', kwargs={'slug': self.slug})
