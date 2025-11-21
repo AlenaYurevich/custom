@@ -18,6 +18,7 @@ def blog_detail(request, slug):
     post = get_object_or_404(Post, slug=slug)
     context = {
         "post": post,
+        "all_tags": Tag.objects.all().order_by('name'),
     }
     return render(request, 'blog_detail.html', context)
 

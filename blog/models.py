@@ -54,7 +54,7 @@ class Post(models.Model):
     # Автоматически создаваемые миниатюры
     image_thumbnail = ImageSpecField(
         source='image',
-        processors=[ResizeToFill(400, 600)],  # Обрезаем до точных размеров
+        processors=[ResizeToFill(400, 500)],  # Обрезаем до точных размеров
         format='JPEG',
         options={'quality': 80}
     )
