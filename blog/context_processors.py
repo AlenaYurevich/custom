@@ -1,4 +1,4 @@
-from .models import Post, Tag
+from .models import Post, Tag, Category
 
 
 def recent_posts(request):
@@ -9,4 +9,10 @@ def recent_posts(request):
 def all_tags(request):
     return {
         'all_tags': Tag.objects.all().order_by('name')
+    }
+
+
+def all_categories(request):
+    return {
+        'all_categories': Category.objects.all().order_by('name')
     }
