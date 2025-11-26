@@ -56,15 +56,9 @@ class Post(models.Model):
         source='image',
         processors=[ResizeToFill(400, 500)],  # Обрезаем до точных размеров
         format='JPEG',
-        options={'quality': 80}
+        options={'quality': 85}
     )
 
-    # image_medium = ImageSpecField(
-    #     source='image',
-    #     processors=[ResizeToFill(800, 600)],
-    #     format='JPEG',
-    #     options={'quality': 85}
-    # )
     image_medium = ImageSpecField(
         source='image',
         processors=[ResizeToFill(832, 624)],
