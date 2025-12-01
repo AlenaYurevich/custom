@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.urls import reverse
 from .models import Post, Category, Tag
 from django.core.paginator import Paginator
 from django.db.models import Q
@@ -11,6 +12,8 @@ def blog_index(request):
     page_obj = paginator.get_page(page_number)
     context = {
         "page_obj": page_obj,
+        "breadcrumb_title": "Блог",
+
     }
     return render(request, 'blog_index.html', context)
 
@@ -19,6 +22,9 @@ def blog_detail(request, slug):
     post = get_object_or_404(Post, slug=slug)
     context = {
         "post": post,
+        'breadcrumb_title': post.title,
+        'breadcrumb_parent': 'Блог',
+        'breadcrumb_parent_url': reverse('blog_index'),  # ← Это ключевая строка
     }
     return render(request, 'blog_detail.html', context)
 
@@ -32,18 +38,25 @@ def blog_category(request, category_slug):
     context = {
         'category': category,
         'posts': posts,  # здесь выводим посты Posts,
+        'breadcrumb_title': category.name,
+        'breadcrumb_parent': 'Блог',
+        'breadcrumb_parent_url': reverse('blog_index'),  # ← Это ключевая строка
     }
     return render(request, 'blog_category.html', context)
 
 
 def posts_by_tag(request, tag_slug):
-    tag = Tag.objects.get(slug=tag_slug)
-    posts = Post.objects.filter(tags=tag)
+    tag = get_object_or_404(Tag, slug=tag_slug)
+    posts = Post.objects.filter(tags=tag).order_by('-created_on')
 
-    return render(request, 'blog/blog_tag.html', {
+    context = {
         'tag': tag,
-        'posts': posts
-    })
+        'posts': posts,
+        'breadcrumb_title': f'Тег: {tag.name}',
+        'breadcrumb_parent': 'Блог',
+        'breadcrumb_parent_url': reverse('blog_index'),
+    }
+    return render(request, 'blog_tag.html', context)
 
 
 def search_posts(request):

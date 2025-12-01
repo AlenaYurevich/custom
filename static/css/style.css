@@ -44,6 +44,7 @@
 .btn-square {
     width: 32px;
     height: 32px;
+    letter-spacing: 0px;
 }
 
 .btn-sm-square {
@@ -643,6 +644,10 @@ section, .section {
 
 .blog .blog-item .blog-img img {
     transition: 0.5s;
+}
+.blog .blog-item .blog-img a {
+    position: relative;
+    z-index: 2;
 }
 
 .blog .blog-item:hover .blog-img img {
