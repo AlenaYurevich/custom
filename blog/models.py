@@ -82,7 +82,7 @@ class Post(models.Model):
     categories = models.ManyToManyField('Category', related_name='posts')
     slug = models.SlugField(max_length=250, unique=True, blank=True)
     order = models.PositiveIntegerField(default=0, db_index=True)
-    tags = models.ManyToManyField(Tag, blank=True)
+    tags = models.ManyToManyField('Tag', related_name='posts', blank=True)
 
     def get_absolute_url(self):
         return reverse('blog_detail', kwargs={'slug': self.slug})
