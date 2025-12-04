@@ -2,7 +2,7 @@ from decimal import Decimal, ROUND_HALF_UP
 from .models import SiteSettings
 
 
-def calculation(value_from_5th):
+def calculation(value_from_5th, value_for_element):
     """
     Рассчитывает стоимость пошива одного изделия на основе настроек сайта.
 
@@ -48,14 +48,14 @@ def calculation(value_from_5th):
 
     # РАСЧЕТ СЕБЕСТОИМОСТИ ИЗДЕЛИЯ
     # Заработная плата на изделие
-    salary_per_item = (salary_per_hour * Decimal(value_from_5th)).quantize(TWO_PLACES, rounding=ROUND_HALF_UP)
+    salary_per_item = (salary_per_hour * Decimal(value_from_5th + value_for_element)).quantize(TWO_PLACES, rounding=ROUND_HALF_UP)
 
     # Налог на профессиональный доход с зарплаты за изделие
     professional_tax = (salary_per_item * (settings.professional_income_tax / Decimal(100))).quantize(TWO_PLACES,
                                                                                                       rounding=ROUND_HALF_UP)
 
     # Накладные расходы за время пошива изделия
-    overhead_costs = (costs_per_hour * Decimal(value_from_5th)).quantize(TWO_PLACES, rounding=ROUND_HALF_UP)
+    overhead_costs = (costs_per_hour * Decimal(value_from_5th + value_for_element)).quantize(TWO_PLACES, rounding=ROUND_HALF_UP)
 
     # Полная себестоимость изделия
     cost_price = (salary_per_item + professional_tax + overhead_costs).quantize(TWO_PLACES, rounding=ROUND_HALF_UP)
@@ -93,7 +93,8 @@ def calculation(value_from_5th):
         'final_price_before_rounding': final_price_before_rounding,
         'final_price_rounded': final_price_rounded,
     }
-    print('настройки', settings, 'норма времени', value_from_5th, 'ЗП в час', salary_per_hour)
+    print('норма времени', value_from_5th, 'ЗП в час', salary_per_hour)
+    print('норма времени для элемента', value_for_element)
     print('аморитизация в месяц', equipment_depreciation_per_month)
     print('затраты в месяц', total_monthly_costs, 'накладные расходы в час', costs_per_hour)
     print('ЗП на изделие', salary_per_item)
