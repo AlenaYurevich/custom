@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .forms import CustomForm
-from .wear import get_value_from_5th_column
+from .wear import get_value_from_5th_column, get_value_for_element
 from .utils import calculation
 
 
@@ -14,9 +14,10 @@ def index(request):
             size = form.cleaned_data['size']
             element = form.cleaned_data['elements']
             value_from_5th = get_value_from_5th_column(product_type, fabric)
+            value_for_element = get_value_for_element(element, fabric)
             # Выполняем расчет с использованием value_from_5th
             if value_from_5th is not None:
-                calculation_result = calculation(value_from_5th)
+                calculation_result = calculation(value_from_5th, value_for_element)
             context = {
                 'form': form,
                 'product_type': product_type,
@@ -24,6 +25,7 @@ def index(request):
                 'size': size,
                 'element': element,
                 'value_from_5th': value_from_5th,
+                'value_for_element': value_for_element,
                 'calculation_result': calculation_result,
                 'success': True  # Флаг успешной отправки
             }
