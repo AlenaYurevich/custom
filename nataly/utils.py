@@ -73,7 +73,7 @@ def calculation(value_from_5th, value_for_element):
 
     # Формируем детализированный результат
     result = {
-        'settings': settings,
+        # 'settings': settings,
         'input_hours': value_from_5th,
 
         # Промежуточные расчеты
