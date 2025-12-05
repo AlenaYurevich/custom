@@ -3,204 +3,118 @@ from openpyxl import load_workbook
 from django.core.cache import cache
 
 
-def load_excel_sheet(file_name):
+EXCEL_FILE = 'wear.xlsx'
+CACHE_KEY = 'excel_data'
+CACHE_TIMEOUT = 3600  # 1 час
+
+
+def get_excel_tables():
     """
     Загружает данные из всех листов с кэшированием
     """
-    cache_key = 'excel_data'
-    data = cache.get(cache_key)
+    tables = cache.get(CACHE_KEY)
+    if tables:
+        return tables
+    file_path = os.path.join(os.path.dirname(__file__), 'files', EXCEL_FILE)
+    workbook = load_workbook(file_path, data_only=True)
 
-    if not data:
-        file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), f'files/{file_name}')
-        workbook = load_workbook(filename=file_path)
-        data = {
-            'main_sheet': workbook['Table 1'],
-            'elements_sheet': workbook['Table 2'],
-        }
-        cache.set(cache_key, data, 3600)  # Кэш на 1 час
-    return data
+    tables = {
+        'main': workbook['Table 1'],
+        'elements': workbook['Table 2'],
+    }
 
-
-def read_types(wearsheet):
-    rows = wearsheet.max_row
-    choices = []
-    for i in range(3, rows + 1):
-        cell = wearsheet.cell(row=i, column=1)
-        if cell.value is not None and str(cell.value).strip() != '':
-            choices.append((cell.value, cell.value))
-    return tuple(choices)
+    cache.set(CACHE_KEY, tables, CACHE_TIMEOUT)
+    return tables
 
 
-def get_value_from_5th_column(product_type, fabric):
-    """
-    Возвращает значение из 5-й колонки для указанного типа продукта и ткани
-    """
-    # Загружаем данные из кэша
-    excel_data = load_excel_sheet('wear.xlsx')
-    worksheet = excel_data['main_sheet']  # Используем main_sheet из кэша
+def fabric_matches(input_fabric, table_fabric):
+    """Проверяет совпадение ткани с учетом диапазонов"""
+    input_fabric = str(input_fabric).strip()
+    table_fabric = str(table_fabric).strip()
 
-    rows = worksheet.max_row
-    current_product_type = None
+    if input_fabric == table_fabric:
+        return True
+
+    if '-' in table_fabric:
+        try:
+            start, end = map(int, table_fabric.split('-'))
+            input_num = int(input_fabric)
+            return start <= input_num <= end
+        except (ValueError, IndexError):
+            return False
+
+    return False
+
+
+def get_value(product_type, fabric, sheet):
+    """Получает значение из 5-й колонки указанного листа"""
+    current_group = None
     fabric_str = str(fabric).strip()
+    use_coefficient = fabric_str == '0'
+    search_fabric = '1' if use_coefficient else fabric_str
 
-    # Определяем, нужно ли применять коэффициент 1.2
-    apply_coefficient = (fabric_str == '0')
-    # Если тип ткани 0, ищем значение для типа ткани 1
-    search_fabric = '1' if apply_coefficient else fabric_str
+    for row in range(3, sheet.max_row + 1):
+        cell_value = sheet.cell(row=row, column=1).value
 
-    for i in range(3, rows + 1):
-        cell_value = worksheet.cell(row=i, column=1).value
+        if cell_value:
+            current_group = str(cell_value).strip()
 
-        # Если в первой колонке есть значение - это новый product_type
-        if cell_value is not None and str(cell_value).strip():
-            current_product_type = str(cell_value).strip()
-
-        # Пропускаем строки, если еще не нашли нужный product_type
-        if current_product_type is None:
+        if not current_group:
             continue
 
-        # Проверяем, совпадает ли текущий product_type с искомым
-        if current_product_type == str(product_type).strip():
-            # Получаем значение ткани из 2-й колонки
-            fabric_value = worksheet.cell(row=i, column=2).value
+        if current_group == str(product_type).strip():
+            fabric_value = sheet.cell(row=row, column=2).value
 
-            if fabric_value is not None:
-                fabric_value_str = str(fabric_value).strip()
+            if fabric_value and fabric_matches(search_fabric, str(fabric_value).strip()):
+                value_cell = sheet.cell(row=row, column=5).value
 
-                # Функция для проверки совпадения ткани
-                def fabric_matches(input_fabric, table_fabric):
-                    input_fabric = str(input_fabric).strip()
-                    table_fabric = str(table_fabric).strip()
+                if value_cell:
+                    try:
+                        value = float(str(value_cell).replace(',', '.'))
+                        return value * 1.2 if use_coefficient else value
+                    except (ValueError, TypeError):
+                        return 0
 
-                    # Точное совпадение
-                    if input_fabric == table_fabric:
-                        return True
-
-                    # Проверка диапазонов типа "3-4"
-                    if '-' in table_fabric:
-                        try:
-                            start, end = map(str.strip, table_fabric.split('-'))
-                            start_num, end_num = int(start), int(end)
-                            input_num = int(input_fabric)
-                            return start_num <= input_num <= end_num
-                        except (ValueError, IndexError):
-                            return False
-
-                    return False
-
-                # Проверяем совпадение с использованием функции
-                if fabric_matches(search_fabric, fabric_value_str):
-                    value_5th_cell = worksheet.cell(row=i, column=5).value
-                    if value_5th_cell is not None:
-                        try:
-                            value_str = str(value_5th_cell).replace(',', '.')
-                            base_value = float(value_str)
-                            # Применяем коэффициент 1.2 для типа ткани 0
-                            if apply_coefficient:
-                                return base_value * 1.2
-                            else:
-                                return base_value
-                        except (ValueError, TypeError):
-                            return 0
     return 0
 
 
-def get_choices_type():
-    """
-    Получает типы продуктов из кэшированного листа Table 1
-    """
-    excel_data = load_excel_sheet('wear.xlsx')
-    if not excel_data:
-        return ()
-    main_sheet = excel_data['main_sheet']  # Table 1
-    return read_types(main_sheet)
-
-
-def get_elements_type():
-    """
-    Получает список элементов из кэшированного листа Table 2
-    """
-    excel_data = load_excel_sheet('wear.xlsx')
-    if not excel_data:
-        return ()
-    elements_sheet = excel_data['elements_sheet']  # Table 2
-    return read_types(elements_sheet)
-
-
-# Использование
-Choices_type = get_choices_type()    # Типы из Table 1
-Elements_type = get_elements_type()   # Элементы из Table 2
+def get_value_from_table1(product_type, fabric):
+    """Получает значение из Table 1"""
+    tables = get_excel_tables()
+    return get_value(product_type, fabric, tables['main'])
 
 
 def get_value_for_element(element, fabric):
-    """
-    Возвращает значение из 5-й колонки Table 2 для указанного типа продукта и ткани
-    """
-    # Загружаем данные из кэша
-    excel_data = load_excel_sheet('wear.xlsx')
-    worksheet = excel_data['elements_sheet']  # Используем elements_sheet (Table 2)
+    """Получает значение из Table 2"""
+    tables = get_excel_tables()
+    return get_value(element, fabric, tables['elements'])
 
-    rows = worksheet.max_row
-    current_element = None
-    fabric_str = str(fabric).strip()
 
-    # Определяем, нужно ли применять коэффициент 1.2 (если такое правило есть для Table 2)
-    apply_coefficient = (fabric_str == '0')
-    # Если тип ткани 0, ищем значение для типа ткани 1
-    search_fabric = '1' if apply_coefficient else fabric_str
+def read_types(wearsheet):
+    """Читает уникальные значения из первого столбца"""
+    choices = []
 
-    for i in range(3, rows + 1):
-        cell_value = worksheet.cell(row=i, column=1).value
+    for i in range(3, wearsheet.max_row + 1):
+        cell = wearsheet.cell(row=i, column=1).value
+        if cell:
+            value = str(cell).strip()
+            if value and value not in choices:
+                choices.append(value)
 
-        # Если в первой колонке есть значение - это новый product_type
-        if cell_value is not None and str(cell_value).strip():
-            current_element = str(cell_value).strip()
+    return tuple((choice, choice) for choice in choices)
 
-        # Пропускаем строки, если еще не нашли нужный product_type
-        if current_element is None:
-            continue
 
-        # Проверяем, совпадает ли текущий product_type с искомым
-        if current_element == str(element).strip():
-            # Получаем значение ткани из 2-й колонки
-            fabric_value = worksheet.cell(row=i, column=2).value
+def get_choices_type():
+    """Получает типы продуктов из Table 1"""
+    excel_data = get_excel_tables()
+    return read_types(excel_data['main']) if excel_data else ()
 
-            if fabric_value is not None:
-                fabric_value_str = str(fabric_value).strip()
 
-                # Функция для проверки совпадения ткани
-                def fabric_matches(input_fabric, table_fabric):
-                    input_fabric = str(input_fabric).strip()
-                    table_fabric = str(table_fabric).strip()
+def get_elements_type():
+    """Получает элементы из Table 2"""
+    excel_data = get_excel_tables()
+    return read_types(excel_data['elements']) if excel_data else ()
 
-                    # Точное совпадение
-                    if input_fabric == table_fabric:
-                        return True
 
-                    # Проверка диапазонов типа "3-4"
-                    if '-' in table_fabric:
-                        try:
-                            start, end = map(str.strip, table_fabric.split('-'))
-                            start_num, end_num = int(start), int(end)
-                            input_num = int(input_fabric)
-                            return start_num <= input_num <= end_num
-                        except (ValueError, IndexError):
-                            return False
-
-                    return False
-
-                # Проверяем совпадение с использованием функции
-                if fabric_matches(search_fabric, fabric_value_str):
-                    value_5th_cell = worksheet.cell(row=i, column=5).value
-                    if value_5th_cell is not None:
-                        try:
-                            value_str = str(value_5th_cell).replace(',', '.')
-                            base_value = float(value_str)
-                            # Применяем коэффициент 1.2 для типа ткани 0 (если нужно)
-                            if apply_coefficient:
-                                return base_value * 1.2
-                            else:
-                                return base_value
-                        except (ValueError, TypeError):
-                            return 0
-    return 0
+Choices_type = get_choices_type()
+Elements_type = get_elements_type()
